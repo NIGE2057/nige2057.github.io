@@ -4,8 +4,8 @@
     <style>
       table, td {
         border: 1px solid black;
-        width: 50px;
-        height: 50px;
+        width: 70px;
+        height: 70px;
         text-align: center;
         vertical-align: middle;
         font-size: 36px;
@@ -30,55 +30,56 @@
         <td id="cell-8"></td>
       </tr>
     </table>
-<script>
-  const cells = document.querySelectorAll("td");
-  let currentPlayer = "Einzeller";
-  const player2 = "Schluckspecht";
-  
-  cells.forEach(function(cell) {
-    cell.addEventListener("click", function() {
-      if (cell.textContent === "") {
-        cell.innerHTML = `<div style="height:100%;">${currentPlayer}</div>`;
-        if (checkWin()) {
-          alert(currentPlayer + " wins!");
-        } else if (checkDraw()) {
-          alert("Draw!");
-        } else {
-          currentPlayer = currentPlayer === "Einzeller" ? player2 : "Einzeller";
-        }
-      }
-    });
-  });
-  
-  function checkWin() {
-    const combinations = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
     
-    for (let i = 0; i < combinations.length; i++) {
-      const [a, b, c] = combinations[i];
-      if (cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  function checkDraw() {
-    for (let i = 0; i < cells.length; i++) {
-      if (cells[i].textContent === "") {
+    <script>
+      const cells = document.querySelectorAll("td");
+      let currentPlayer = "Einzeller";
+      const player2 = "Schluckspecht";
+      
+      cells.forEach(function(cell) {
+        cell.addEventListener("click", function() {
+          if (cell.textContent === "") {
+            cell.textContent = currentPlayer;
+            if (checkWin()) {
+              alert(currentPlayer + " wins!");
+            } else if (checkDraw()) {
+              alert("Draw!");
+            } else {
+              currentPlayer = currentPlayer === "Einzeller" ? player2 : "Einzeller";
+            }
+          }
+        });
+      });
+      
+      function checkWin() {
+        const combinations = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6]
+        ];
+        
+        for (let i = 0; i < combinations.length; i++) {
+          const [a, b, c] = combinations[i];
+          if (cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
+            return true;
+          }
+        }
         return false;
       }
-    }
-    return true;
-  }
-</script>
-</body>
+      
+      function checkDraw() {
+        for (let i = 0; i < cells.length; i++) {
+          if (cells[i].textContent === "") {
+            return false;
+          }
+        }
+        return true;
+      }
+    </script>
+  </body>
 </html>
