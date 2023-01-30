@@ -18,6 +18,7 @@
     </style>
   </head>
   <body>
+    <a href="/index.html"> ZURÜCK </a>
     <table id="game">
       <tr>
         <td id="cell-0"></td>
@@ -35,8 +36,17 @@
         <td id="cell-8"></td>
       </tr>
     </table>
+    <button id="reset-button">Reset</button>
     
     <script>
+      const resetButton = document.querySelector("#reset-button");
+       resetButton.addEventListener("click", function() {
+       cells.forEach(function(cell) {
+       cell.textContent = "";
+       });
+       currentPlayer = "Einzeller";
+      });
+
       const cells = document.querySelectorAll("td");
       let currentPlayer = "Einzeller";
       const player2 = "Schluckspecht";
