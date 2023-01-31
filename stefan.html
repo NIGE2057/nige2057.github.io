@@ -34,12 +34,6 @@
       bottom: 320px;
       left: 25%;
     }
-    .character.falling{
-      animation: falling 1s linear forwards;
-    }
-    .character.walk-across{
-      animation: walk-across 1s linear forwards;
-    }
     @keyframes walk-across {
       0% {
         transform: translateX(0);
@@ -55,6 +49,12 @@
       100% {
         transform: translateY(200px);
       }
+    }
+    .falling{
+      animation: falling 1s linear;
+    }
+    .walk-across{
+      animation: walk-across 1s linear;
     }
     #water {
       width: 100%;
@@ -82,13 +82,22 @@
     const gameResult = document.querySelector("#game-result");
     const character = document.querySelector(".character");
 
-    startGameBtn.addEventListener("click", function() {
-      character.classList.remove("walk-across");
+    function resetCharacter(){
+      character.classList.remove"walk-across");
       character.classList.remove("falling");
       character.style.left = "25%";
       character.style.bottom = "320px";
+    }
+    startGameBtn.addEventListener("click", function() {
+      resetCharacter();
+      const randomNumber = Math.random();
+    if (randomNumber > 0.5) {
+      gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
+      character.classList.add("walk-across");
+    } else {
+      gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
       character.classList.add("falling");
-      
+    }
     });
   </script>
 </body>
