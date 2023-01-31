@@ -11,45 +11,56 @@
       flex-direction: column;
       align-items: center;
       margin-top: 50px;
+      position: relative;
     }
     button {
       padding: 10px 20px;
       font-size: 20px;
       margin-top: 20px;
     }
-    #character {
-      position: absolute;
-      bottom: 50px;
-      left: 0;
-      height: 50px;
-      width: 50px;
-      animation: walk-across-bridge 1s linear forwards;
-    }
-    @keyframes walk-across-bridge {
-      from {
-        left: 0;
-      }
-      to {
-        left: 100%;
-      }
-    }
-    #bridge {
-      position: relative;
-      top: 100px;
+    .bridge {
       width: 100%;
       height: 50px;
-      background-color: gray;
+      background-color: brown;
+      position: absolute;
+      bottom: 75px;
+      left: 0;
     }
-    #fall {
-      animation: fall 1s linear;
+    .character {
+      width: 50px;
+      height: 50px;
+      background-color: yellow;
+      position: absolute;
+      bottom: 125px;
+      left: 25%;
+      animation: walk-across 1s ease-in-out infinite;
     }
-    @keyframes fall {
-      from {
-        bottom: 50px;
+    @keyframes walk-across {
+      0% {
+        transform: translateX(0);
       }
-      to {
-        bottom: 0;
+      100% {
+        transform: translateX(75%);
       }
+    }
+    .falling {
+      animation: falling 1s ease-in-out;
+    }
+    @keyframes falling {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(200px);
+      }
+    }
+    #water {
+      width: 100%;
+      height: 200px;
+      background-color: blue;
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
   </style>
 </head>
@@ -58,22 +69,22 @@
   <p>Stefan was a troll and a prankster who played pranks every day. One day, he decided to play his biggest prank by building a large wooden bridge over a river. The people would think the bridge is strong enough to cross, but in reality, it would collapse and drop them into the water.</p>
   <div class="game-container">
     <p>Can you cross the bridge without falling into the water?</p>
-    <div id="bridge"></div>
-    <div id="character"></div>
     <button id="start-game-btn">Start the game</button>
     <div id="game-result"></div>
+    <div class="bridge"></div>
+    <div class="character"></div>
   </div>
+  <div id="water"></div>
   <script>
     const startGameBtn = document.querySelector("#start-game-btn");
     const gameResult = document.querySelector("#game-result");
-    const character = document.querySelector("#character");
+    const character = document.querySelector(".character");
 
     startGameBtn.addEventListener("click", function() {
       const randomNumber = Math.random();
+      character.classList.remove("falling");
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
-        character.style.bottom = "50px";
-        character.style.animation = "walk-across-bridge 1s linear forwards";
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
         character.style.bottom = "0";
