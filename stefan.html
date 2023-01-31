@@ -17,6 +17,31 @@
       font-size: 20px;
       margin-top: 20px;
     }
+    .bridge {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background-color: brown;
+    }
+    .character {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      animation: walk-across-bridge 5s linear forwards;
+      display: none;
+    }
+    @keyframes walk-across-bridge {
+      from {
+        left: 0;
+      }
+      to {
+        left: calc(100% - 50px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -27,14 +52,18 @@
     <button id="start-game-btn">Start the game</button>
     <div id="game-result"></div>
   </div>
+  <div class="bridge"></div>
+  <div class="character"></div>
   <script>
     const startGameBtn = document.querySelector("#start-game-btn");
     const gameResult = document.querySelector("#game-result");
+    const character = document.querySelector(".character");
 
     startGameBtn.addEventListener("click", function() {
       const randomNumber = Math.random();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
+        character.style.display = "block";
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
       }
@@ -42,3 +71,4 @@
   </script>
 </body>
 </html>
+
