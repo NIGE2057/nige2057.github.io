@@ -23,7 +23,7 @@
       height: 20px;
       background-color: brown;
       position: absolute;
-      bottom: 50px;
+      bottom: 0px;
       left: 0;
     }
     .character {
@@ -31,9 +31,9 @@
       height: 50px;
       background-color: yellow;
       position: absolute;
-      bottom: 70px;
+      bottom: 20px;
       left: 25%;
-      animation: walk-across 1s ease-in-out infinite;
+      animation: walk-across 1s linear forwards;
     }
     @keyframes walk-across {
       0% {
@@ -44,7 +44,7 @@
       }
     }
     .falling {
-      animation: falling 1s ease-in-out;
+      animation: falling 1s linear forwards;
     }
     @keyframes falling {
       0% {
@@ -82,9 +82,10 @@
 
     startGameBtn.addEventListener("click", function() {
       const randomNumber = Math.random();
-      character.classList.remove("falling");
+      character.style.animation.remove();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
+        character.style.animation = "walk-across 1s linear";
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
         character.style.bottom = "0";
