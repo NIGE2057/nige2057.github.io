@@ -71,7 +71,7 @@
   <p>Stefan was a troll and a prankster who played pranks every day. One day, he decided to play his biggest prank by building a large wooden bridge over a river. The people would think the bridge is strong enough to cross, but in reality, it would collapse and drop them into the water.</p>
   <div class="game-container">
     <p>Can you cross the bridge without falling into the water?</p>
-    <button id="start-game-btn" onclick="start()">Start the game</button>
+    <button id="start-game-btn">Start the game</button>
     <div id="game-result"></div>
   </div>
   <div class="bridge"></div>
@@ -98,10 +98,9 @@
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
         character.classList.add("falling");
-    }
+      }
     }
     startGameBtn.addEventListener("click", start());
-    startGameBtn.addEventListener("click", reset());
   </script>
 </body>
 </html>
