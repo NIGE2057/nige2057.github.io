@@ -90,7 +90,8 @@
       gameResult.innerHTML = "";
 
     }
-    function start() {
+    startGameBtn.addEventListener("click", function() {
+      resetCharacter();
       const randomNumber = Math.random();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
@@ -99,8 +100,7 @@
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
         character.classList.add("falling");
       }
-    }
-    startGameBtn.addEventListener("click", start());
+    });
   </script>
 </body>
 </html>
