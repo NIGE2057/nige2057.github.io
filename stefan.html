@@ -82,21 +82,18 @@
     const gameResult = document.querySelector("#game-result");
     const character = document.querySelector(".character");
 
-    function resetCharacter(){
+    startGameBtn.addEventListener("click", function() {
       character.classList.remove("walk-across");
       character.classList.remove("falling");
       character.style.left = "25%";
       character.style.bottom = "320px";
-    }
-    startGameBtn.addEventListener("click", function() {
-      resetCharacter();
       const randomNumber = Math.random();
-    if (randomNumber > 0.5) {
-      gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
-      character.classList.add("walk-across");
-    } else {
-      gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
-      character.classList.add("falling");
+      if (randomNumber > 0.5) {
+        gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
+        character.classList.add("walk-across");
+      } else {
+        gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
+        character.classList.add("falling");
     }
     });
   </script>
