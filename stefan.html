@@ -34,6 +34,12 @@
       bottom: -30px;
       left: 25%;
     }
+    .walk-across {
+      walk-across 1s linear forwards;
+    }
+    .falling {
+      falling 1s linear forwards
+    }
     @keyframes walk-across {
       0% {
         transform: translateX(0);
@@ -47,7 +53,7 @@
         transform: translateY(0);
       }
       100% {
-        transform: translateY(100px);
+        transform: translateY(400px);
       }
     }
     #water {
