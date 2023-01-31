@@ -83,16 +83,16 @@
     const character = document.querySelector(".character");
 
     startGameBtn.addEventListener("click", function() {
+      character.classList.remove("walk-across");
+      character.classList.remove("falling");
       character.style.left = "25%";
       character.style.bottom = "320px";
       const randomNumber = Math.random();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
-        character.classList.remove("falling");
         character.classList.add("walk-across");
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
-        character.classList.remove("walk-across");
         character.classList.add("falling");
       }
     });
