@@ -17,29 +17,38 @@
       font-size: 20px;
       margin-top: 20px;
     }
-    .bridge {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 50px;
-      background-color: brown;
-    }
-    .character {
+    #character {
       position: absolute;
       bottom: 50px;
       left: 0;
-      width: 50px;
       height: 50px;
-      background-color: blue;
-      animation: walk-across-bridge 5s linear forwards;
-      display: none;
+      width: 50px;
+      animation: walk-across-bridge 1s linear forwards;
     }
     @keyframes walk-across-bridge {
       from {
         left: 0;
       }
       to {
-        left: calc(100% - 50px);
+        left: 100%;
+      }
+    }
+    #bridge {
+      position: relative;
+      top: 100px;
+      width: 100%;
+      height: 50px;
+      background-color: gray;
+    }
+    #fall {
+      animation: fall 1s linear;
+    }
+    @keyframes fall {
+      from {
+        bottom: 50px;
+      }
+      to {
+        bottom: 0;
       }
     }
   </style>
@@ -49,26 +58,28 @@
   <p>Stefan was a troll and a prankster who played pranks every day. One day, he decided to play his biggest prank by building a large wooden bridge over a river. The people would think the bridge is strong enough to cross, but in reality, it would collapse and drop them into the water.</p>
   <div class="game-container">
     <p>Can you cross the bridge without falling into the water?</p>
+    <div id="bridge"></div>
+    <div id="character"></div>
     <button id="start-game-btn">Start the game</button>
     <div id="game-result"></div>
   </div>
-  <div class="bridge"></div>
-  <div class="character"></div>
   <script>
     const startGameBtn = document.querySelector("#start-game-btn");
     const gameResult = document.querySelector("#game-result");
-    const character = document.querySelector(".character");
+    const character = document.querySelector("#character");
 
     startGameBtn.addEventListener("click", function() {
       const randomNumber = Math.random();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
-        character.style.display = "block";
+        character.style.bottom = "50px";
+        character.style.animation = "walk-across-bridge 1s linear forwards";
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
+        character.style.bottom = "0";
+        character.style.animation = "fall 1s linear";
       }
     });
   </script>
 </body>
 </html>
-
