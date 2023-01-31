@@ -91,7 +91,7 @@
 
     }
     startGameBtn.addEventListener("click", function() {
-      resetCharacter();
+      reset();
       const randomNumber = Math.random();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
