@@ -82,11 +82,16 @@
     const gameResult = document.querySelector("#game-result");
     const character = document.querySelector(".character");
 
-    function start() {
+    function reset(){
+      character.style.left = "0";
+      character.style.bottom = "0";
       character.classList.remove("walk-across");
       character.classList.remove("falling");
-      character.style.left = "25%";
-      character.style.bottom = "320px";
+      gameResult.innerHTML = "";
+
+    }
+    function start() {
+      reset()
       const randomNumber = Math.random();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
