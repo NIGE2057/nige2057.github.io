@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stefan, the Troll and Prankster Game</title>
+  <style>
+    h1 {
+      text-align: center;
+    }
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Stefan, the Troll and Prankster</h1>
+  <p>Stefan was a troll and a prankster who played pranks every day. One day, he decided to play his biggest prank by building a large wooden bridge over a river. The people would think the bridge is strong enough to cross, but in reality, it would collapse and drop them into the water.</p>
+  <div class="game-container">
+    <p>Can you cross the bridge without falling into the water?</p>
+    <button id="start-game-btn">Start the game</button>
+    <div id="game-result"></div>
+  </div>
+  <script>
+    const startGameBtn = document.querySelector("#start-game-btn");
+    const gameResult = document.querySelector("#game-result");
+
+    startGameBtn.addEventListener("click", function() {
+      const randomNumber = Math.random();
+      if (randomNumber > 0.5) {
+        gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
+      } else {
+        gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
+      }
+    });
+  </script>
+</body>
+</html>
