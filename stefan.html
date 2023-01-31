@@ -33,7 +33,6 @@
       position: absolute;
       bottom: 20px;
       left: 25%;
-      animation: walk-across 1s linear forwards;
     }
     @keyframes walk-across {
       0% {
@@ -82,14 +81,14 @@
 
     startGameBtn.addEventListener("click", function() {
       const randomNumber = Math.random();
-      character.style.animation.remove();
       if (randomNumber > 0.5) {
         gameResult.innerHTML = "Congratulations! You made it across the bridge safely.";
+        character.style.bottom = 0;
         character.style.animation = "walk-across 1s linear";
       } else {
         gameResult.innerHTML = "Sorry, you fell into the water. Better luck next time!";
         character.style.bottom = "0";
-        character.style.animation = "fall 1s linear";
+        character.style.animation = "falling 1s linear";
       }
     });
   </script>
