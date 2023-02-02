@@ -1,1 +1,85 @@
+<html>
+  <head>
+    <style>
+      .board {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        border: 2px solid black;
+      }
+      .board div {
+        background-color: lightblue;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+      .red, .yellow {
+        background-color: transparent;
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+      }
+      .red {
+        background-color: red;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Connect 4</h1>
+    <div class="board">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <script>
+      const board = document.querySelector(".board");
+      let player = "red";
+      board.addEventListener("click", (e) => {
+        if (e.target.classList.contains("red") || e.target.classList.contains("yellow")) {
+          return;
+        }
+        e.target.classList.add(player);
+        if (player === "red") {
+          player = "yellow";
+        } else {
+          player = "red";
+        }
+      });
+    </script>
+  </body>
+</html>
 
