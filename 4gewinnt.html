@@ -20,6 +20,9 @@
         border-radius: 50%;
         height: 100%;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .red {
         background-color: red;
@@ -69,10 +72,18 @@
       const board = document.querySelector(".board");
       let player = "red";
       board.addEventListener("click", (e) => {
-        if (e.target.classList.contains("red") || e.target.classList.contains("yellow")) {
+        const column = e.target.parentNode;
+        let emptyCell = null;
+        for (const cell of column.children) {
+          if (!cell.classList.contains("red") && !cell.classList.contains("yellow")) {
+            emptyCell = cell;
+            break;
+          }
+        }
+        if (!emptyCell) {
           return;
         }
-        e.target.classList.add(player);
+        emptyCell.classList.add(player);
         if (player === "red") {
           player = "yellow";
         } else {
@@ -82,4 +93,3 @@
     </script>
   </body>
 </html>
-
